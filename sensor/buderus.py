@@ -95,7 +95,7 @@ def setup_platform(hass, config, add_devices, discovery_info=None):
             'mdi:select-inverse',
             '/gateway/versionFirmware'
         ],
-        'gw_versionhardware': [
+        'gw_version_hardware': [
             'Gateway Hardware Version',
             none,
             'mdi:engine',
