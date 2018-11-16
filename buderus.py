@@ -14,9 +14,9 @@ from Crypto.Cipher import AES
 from homeassistant.helpers import config_validation as cv
 from homeassistant.const import (CONF_HOST, CONF_PASSWORD, CONF_NAME)
 
-DOMAIN = 'buderus'
+DOMAIN = 'bosch'
 
-DEFAULT_NAME = 'Buderus'
+DEFAULT_NAME = 'Bosch'
 
 CONFIG_SCHEMA = vol.Schema({
     DOMAIN: vol.Schema({
@@ -46,7 +46,7 @@ class BuderusBridge(object):
 
     def __init__(self, name, host, password):
         self.logger = logging.getLogger(__name__)
-        self.logger.info("Init Buderus")
+        self.logger.info("Init Bosch")
         self.__ua = "TeleHeater/2.2.3"
         self.__content_type = "application/json"
         self._host = host
@@ -71,10 +71,10 @@ class BuderusBridge(object):
     def _get_data(self, path):
         try:
             url = 'http://' + self._host + path
-            self.logger.debug("Buderus fetching data from {}".format(path))
+            self.logger.debug("Bosch fetching data from {}".format(path))
             resp = self.opener.open(url)
             plain = self._decrypt(resp.read())
-            self.logger.debug("Buderus data received from {}: {}".format(url, plain))
+            self.logger.debug("Bosch data received from {}: {}".format(url, plain))
             return plain
         except Exception as e:
             self.logger.error("Buderus error happened at {}: {}".format(url, e))
@@ -85,7 +85,7 @@ class BuderusBridge(object):
             j = json.load(StringIO(data.decode()))
             return j
         except Exception as e:
-            self.logger.error("Buderus error happened while reading JSON data {}: {}".format(data, e))
+            self.logger.error("Bosch error happened while reading JSON data {}: {}".format(data, e))
             return False
             
     def _get_value(self, j):
@@ -98,19 +98,19 @@ class BuderusBridge(object):
     def _set_data(self, path, data):
         try:
             url = 'http://' + self._host + path
-            self.logger.info("Buderus setting value for {}".format(path))
+            self.logger.info("Bosch setting value for {}".format(path))
             headers = {"User-Agent": self.__ua, "Content-Type": self.__content_type}
             request = urllib.request.Request(url, data=data, headers=headers, method='PUT')
             req = urllib.request.urlopen(request)
-            self.logger.info("Buderus returned {}: {}".format(req.status, req.reason))
+            self.logger.info("Bosch returned {}: {}".format(req.status, req.reason))
             if not req.status == 204:
                 self.logger.debug(req.read())
         except Exception as e:
-            self.logger.error("Buderus error happened at {}: {}".format(url, e))
+            self.logger.error("Bosch error happened at {}: {}".format(url, e))
             return None
             
     def _submit_data(self, path, data):
-        self.logger.info("Buderus SETTING {} to {}".format(path, data))
+        self.logger.info("Bosch SETTING {} to {}".format(path, data))
         payload = self._json_encode(data)
         self.logger.debug(payload)
         req = self._set_data(path, self._encrypt(str(payload)))
@@ -135,7 +135,7 @@ class BuderusBridge(object):
             return {"minValue": j['minValue'], "maxValue": j['maxValue']}
 
     def update_item(self, item, caller=None, source=None, dest=None):
-        if caller != "Buderus":
+        if caller != "Bosch":
             id = item.conf['km_id']
             plain = self._get_data(id)
             data = self._get_json(plain)
@@ -150,9 +150,9 @@ class BuderusBridge(object):
                     self._submit_data(item, id)
                     return
                 else:
-                    self.logger.error("Buderus value {} not allowed [{}]".format(item(), allowed_values))
+                    self.logger.error("Bosch value {} not allowed [{}]".format(item(), allowed_values))
                     item(item.prev_value(), "Buderus")
             else:
-                self.logger.error("Buderus item {} not writeable!".format(item))
-                item(item.prev_value(), "Buderus")
+                self.logger.error("Bosch item {} not writeable!".format(item))
+                item(item.prev_value(), "Bosch")
 """
