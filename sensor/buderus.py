@@ -48,7 +48,7 @@ def setup_platform(hass, config, add_devices, discovery_info=None):
             '/heatSources/energyMonitoring/tankLevel'
         ],
         'fuel_caloric_value': [
-            'Energy Monitoring Tank Level',
+            'Fuel Caloric value',
             none,
             'mdi:fuel',
             '/heatSources/hs1/fuel/caloricValue'
