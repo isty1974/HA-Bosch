@@ -1,5 +1,5 @@
 """
-Platform to control a Buderus KM200 unit.
+Platform to control a Bosch unit.
 """
 import logging
 
@@ -8,7 +8,7 @@ from homeassistant.components.climate import (
 from homeassistant.const import (
     TEMP_CELSIUS, ATTR_TEMPERATURE)
 from custom_components.buderus import (
-    DOMAIN, BuderusBridge)
+    DOMAIN, BoschBridge)
 from homeassistant.components.climate import ClimateDevice
 
 SUPPORT_FLAGS = (SUPPORT_TARGET_TEMPERATURE)
@@ -16,15 +16,15 @@ SUPPORT_FLAGS = (SUPPORT_TARGET_TEMPERATURE)
 def setup_platform(hass, config, add_devices, discovery_info=None):
     bridge = hass.data[DOMAIN]
 
-    thermostat = BuderusThermostat(
+    thermostat = BoschThermostat(
         name="%s %s" % (bridge.name, 'Thermostat'),
         bridge=bridge
     )
 
     add_devices([thermostat], True)
 
-class BuderusThermostat(ClimateDevice):
-    """Representation of a Buderus thermostat."""
+class BoschThermostat(ClimateDevice):
+    """Representation of a Bosch thermostat."""
 
     def __init__(self, name, bridge):
         """Initialize the thermostat."""
