@@ -112,8 +112,7 @@ def setup_platform(hass, config, add_devices, discovery_info=None):
             none,
             'mdi:home-variant',
             '/system/healthStatus'
-        ],
-        
+        ],        
         'return_temperature': [
             'Return Temperature',
             TEMP_CELSIUS,
