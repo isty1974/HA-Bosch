@@ -230,19 +230,19 @@ def setup_platform(hass, config, add_devices, discovery_info=None):
          'hotwater_current_workingtime': [
             'Hotwater Workingtime',
             None,
-            None,
+            'mdi:progress-clock',
             '/dhwCircuits/dhw1/workingTime'
         ],
          'pump_modulation': [
             'Pump Modulation',
             None,
-            None,
+            'mdi:water-pump',
             '/system/appliance/CHpumpModulation'
         ],
          'system_pressure': [
             'System Pressure',
             None,
-            None,
+            'mdi:arrow-collapse-vertical',
             '/system/appliance/systemPressure'
         ],
     }
