@@ -1,5 +1,5 @@
 """
-Support to communicate with a Buderus KM200 unit.
+Support to communicate with a Bosch unit.
 """
 
 import logging
@@ -33,13 +33,13 @@ def setup(hass, config):
     name = conf.get(CONF_NAME)
     password = conf.get(CONF_PASSWORD)
 	
-    bridge = BuderusBridge(name, host, password)
+    bridge = BoschBridge(name, host, password)
 	
     hass.data[DOMAIN] = bridge
 
     return True
 
-class BuderusBridge(object):
+class BoschBridge(object):
     BS = AES.block_size
     INTERRUPT = '\u0001'
     PAD = '\u0000'
