@@ -19,97 +19,97 @@ def setup_platform(hass, config, add_devices, discovery_info=None):
     SENSOR_TYPES = {
         'fuel_caloric_value': [
             'Fuel Caloric Value',
-            none,
+            None,
             'mdi:chart-histogram',
             '/system/heatSources/hs1/fuel/caloricValue'
         ],
         'energy_monitoring_consumption': [
             'Energy Monitoring Consumption',
-            none,
+            None,
             'mdi:chart-line-variant',
             '/heatSources/energyMonitoring/consumption'
         ],
         'em_max_tank_level': [
             'Energy Monitoring Max Tank Level',
-            none,
+            None,
             'mdi:chart-line-variant',
             '/heatSources/energyMonitoring/maxTankLevel'
         ],
         'em_min_tank_level': [
             'Energy Monitoring Min Tank Level',
-            none,
+            None,
             'mdi:chart-line-variant',
             '/heatSources/energyMonitoring/minTankLevel'
         ],
         'em_tank_level': [
             'Energy Monitoring Tank Level',
-            none,
+            None,
             'mdi:chart-line-variant',
             '/heatSources/energyMonitoring/tankLevel'
         ],
         'fuel_caloric_value': [
             'Fuel Caloric value',
-            none,
+            None,
             'mdi:fuel',
             '/heatSources/hs1/fuel/caloricValue'
         ],
         'energy_reservoir': [
             'Energy Reservoir',
-            none,
+            None,
             'mdi:chart-multiline',
             '/heatSources/hs1/energyReservoir'
         ],
         'energy_reservoir_alert': [
             'Energy Reservoir Alert',
-            none,
+            None,
             'mdi:chart-multiline',
             '/heatSources/hs1/reservoirAlert'
         ],
         'system_energy_reservoir': [
             'System Energy Reservoir',
-            none,
+            None,
             'mdi:chart-multiline',
             '/system/heatSources/hs1/energyReservoir'
         ],
         'system_energy_reservoir_alert': [
             'System Energy Reservoir Alert',
-            none,
+            None,
             'mdi:chart-multiline',
             '/system/heatSources/hs1/reservoirAlert'
         ],
         'gw_datetime': [
             'Gateway Date Time',
-            none,
+            None,
             'mdi:calendar-range',
             '/gateway/DateTime'
         ],
         'gw_uuid': [
             'Gateway UUID',
-            none,
+            None,
             'mdi:barcode',
             '/gateway/uuid'
         ],
         'gw_version_firmware': [
             'Gateway Firmware Version',
-            none,
+            None,
             'mdi:select-inverse',
             '/gateway/versionFirmware'
         ],
         'gw_version_hardware': [
             'Gateway Hardware Version',
-            none,
+            None,
             'mdi:engine',
             '/gateway/versionHardware'
         ],
         'system_bus': [
             'System Bus',
-            none,
+            None,
             'mdi:bus-side',
             '/system/bus'
         ],
         'system_health_status': [
             'System Health Status',
-            none,
+            None,
             'mdi:home-variant',
             '/system/healthStatus'
         ],        
