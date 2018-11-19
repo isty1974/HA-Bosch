@@ -151,7 +151,7 @@ class BoschBridge(object):
                     return
                 else:
                     self.logger.error("Bosch value {} not allowed [{}]".format(item(), allowed_values))
-                    item(item.prev_value(), "Buderus")
+                    item(item.prev_value(), "Bosch")
             else:
                 self.logger.error("Bosch item {} not writeable!".format(item))
                 item(item.prev_value(), "Bosch")
