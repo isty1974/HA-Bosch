@@ -275,7 +275,7 @@ def setup_platform(hass, config, add_devices, discovery_info=None):
 class BoschSensor(Entity):
     """Representation of a Bosch sensor."""
 
-    def __init__(self, name, bridge: BuderusBridge, sensor_type, unit, icon, km_id):
+    def __init__(self, name, bridge: BoschBridge, sensor_type, unit, icon, km_id):
         """Initialize the Bosch sensor."""
         self._name = name
         self._bridge = bridge
